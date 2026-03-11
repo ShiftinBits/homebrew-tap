@@ -3,7 +3,7 @@ cask "pmux" do
   name "pmux"
   desc "Secure remote tmux access from the PocketMux mobile app"
   homepage "https://pmux.io"
-  version "0.0.2"
+  version "0.0.3"
 
   livecheck do
     skip "Auto-generated on release."
@@ -13,19 +13,42 @@ cask "pmux" do
 
   on_macos do
     url "https://github.com/ShiftinBits/pmux-agent/releases/download/v#{version}/pmux-agent_#{version}_Darwin_universal.zip"
-    sha256 "0d9dc5e53153e76cb04a029092a9912bd393eaa093f384646864ff802aa90821"
+    sha256 "011b2ed6cfc3913574dbeab6a6b5505979fbe2e015b3812368d370918be6c6fc"
   end
 
   on_linux do
     on_intel do
       url "https://github.com/ShiftinBits/pmux-agent/releases/download/v#{version}/pmux-agent_#{version}_Linux_x86_64.tar.gz"
-      sha256 "291801aad8a7ca99e5b82bcfec61496cf764e32d78bebfd17d090ae3cb0a6915"
+      sha256 "07cf811b4a49baec5f3d9e7b2d312eff9729856e3939abcc6da372e9e29f56b3"
     end
     on_arm do
       url "https://github.com/ShiftinBits/pmux-agent/releases/download/v#{version}/pmux-agent_#{version}_Linux_arm64.tar.gz"
-      sha256 "2174c417739e027b3dec5d036b4b2626f1c0230efcc0db6ceae6bb6b6004fb6d"
+      sha256 "646314944c276341e247161bf0327f07ba559e120a6c7cb6175476be01c65c24"
     end
   end
 
-  # No zap stanza required
+  uninstall_preflight do
+    system_command "#{staged_path}/pmux", args: ["uninstall", "--keep-config", "--yes"]
+  end
+
+  caveats do
+    "The pmux agent service will be stopped and removed on uninstall."
+    ""
+    "For full cleanup (including un-registering this host from the"
+    "signaling server), run before uninstalling:"
+    ""
+    "  pmux uninstall"
+  end
+
+  uninstall launchctl: [
+      "io.pmux.agent",
+    ],
+    delete: [
+      "~/Library/LaunchAgents/io.pmux.agent.plist",
+    ]
+
+  zap trash: [
+      "~/.config/pmux",
+    ]
+
 end
