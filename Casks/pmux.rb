@@ -3,7 +3,7 @@ cask "pmux" do
   name "pmux"
   desc "Secure remote tmux access from the PocketMux mobile app"
   homepage "https://pmux.io"
-  version "0.0.1"
+  version "0.0.2"
 
   livecheck do
     skip "Auto-generated on release."
@@ -13,17 +13,17 @@ cask "pmux" do
 
   on_macos do
     url "https://github.com/ShiftinBits/pmux-agent/releases/download/v#{version}/pmux-agent_#{version}_Darwin_universal.zip"
-    sha256 "15ab9035c58fa1cb0ceae69f1836fad40a8a27ccd90fafd25306d296585e6391"
+    sha256 "0d9dc5e53153e76cb04a029092a9912bd393eaa093f384646864ff802aa90821"
   end
 
   on_linux do
     on_intel do
       url "https://github.com/ShiftinBits/pmux-agent/releases/download/v#{version}/pmux-agent_#{version}_Linux_x86_64.tar.gz"
-      sha256 "aa87265f5be98eda93935579bb3530ba9aa04c52423700548e56c37f6b6f7241"
+      sha256 "291801aad8a7ca99e5b82bcfec61496cf764e32d78bebfd17d090ae3cb0a6915"
     end
     on_arm do
       url "https://github.com/ShiftinBits/pmux-agent/releases/download/v#{version}/pmux-agent_#{version}_Linux_arm64.tar.gz"
-      sha256 "12e109374f2ff3b20112cc04158f8caaa76b2713b956fd392f62b57257808e73"
+      sha256 "2174c417739e027b3dec5d036b4b2626f1c0230efcc0db6ceae6bb6b6004fb6d"
     end
   end
 
