@@ -3,7 +3,7 @@ cask "pmux" do
   name "pmux"
   desc "Secure and private remote tmux access from your phone"
   homepage "https://pmux.io"
-  version "0.0.5"
+  version "0.0.6"
 
   livecheck do
     skip "Auto-generated on release."
@@ -13,17 +13,17 @@ cask "pmux" do
 
   on_macos do
     url "https://github.com/ShiftinBits/pmux-agent/releases/download/v#{version}/pmux-agent_#{version}_Darwin_universal.zip"
-    sha256 "1fbf2e99ad96b32bfb99cddd6d810a4d7e022a7a36d3e2f788f8832af730bb61"
+    sha256 "49a74749dc2c17958bc3f8923351f4b5e1f743dbed06c3ca6d1c9e0c7495eb1f"
   end
 
   on_linux do
     on_intel do
       url "https://github.com/ShiftinBits/pmux-agent/releases/download/v#{version}/pmux-agent_#{version}_Linux_x86_64.tar.gz"
-      sha256 "ca16dd090306d62d755a7aef9bf05e3c1b5e8fc2f5aa6c120d6a934c948706d4"
+      sha256 "bf2533c2cf953b14262147a469310617da20b7713247b33d83e942aad7d86608"
     end
     on_arm do
       url "https://github.com/ShiftinBits/pmux-agent/releases/download/v#{version}/pmux-agent_#{version}_Linux_arm64.tar.gz"
-      sha256 "436f6284da0c040ea9c2bffd9ed7f822828925751a8a15441b81ed89aec84f98"
+      sha256 "9cd6e0fc81f71524154d95cedc6a13eb242839392b5f259f5a94923df05612b6"
     end
   end
 
