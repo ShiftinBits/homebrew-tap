@@ -13,17 +13,17 @@ cask "pmux" do
 
   on_macos do
     url "https://github.com/ShiftinBits/pmux-agent/releases/download/v#{version}/pmux-agent_#{version}_Darwin_universal.zip"
-    sha256 "0e31b11caf15f9b4893271dac54a87572ddd66c951a72feb5774cd094b4fb1c5"
+    sha256 "0d87a5dc6dc86aafd3966fe8936a04ea471e5a03949e61a6ccf72b7aa4e69a37"
   end
 
   on_linux do
     on_intel do
       url "https://github.com/ShiftinBits/pmux-agent/releases/download/v#{version}/pmux-agent_#{version}_Linux_x86_64.tar.gz"
-      sha256 "921421cc6af6ab330dfc4a24ca9aeafd71ee4e17ec576f2e02cdaaec167261f1"
+      sha256 "236fe649cb43d8a9f221eefccab5fcf37bedc6343eb73ff5e5e6943b37c5d2f1"
     end
     on_arm do
       url "https://github.com/ShiftinBits/pmux-agent/releases/download/v#{version}/pmux-agent_#{version}_Linux_arm64.tar.gz"
-      sha256 "67849126f2ec2c7a1d49967ec0a2a9b57a252deeab273a7674a0a5b82edbc583"
+      sha256 "daa19392852ec6a335ce1360cbf3978dfec21675ac469ef6e209a8eebd4e19bc"
     end
   end
 
