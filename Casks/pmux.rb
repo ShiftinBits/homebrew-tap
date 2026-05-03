@@ -3,24 +3,27 @@ cask "pmux" do
   version "0.2.2"
 
   on_macos do
-    url "https://github.com/ShiftinBits/pmux-agent/releases/download/v#{version}/pmux-agent_#{version}_Darwin_universal.zip"
+    url "https://github.com/ShiftinBits/pmux-agent/releases/download/v#{version}/pmux-agent_#{version}_Darwin_universal.zip",
+        verified: "github.com/ShiftinBits/pmux-agent/"
     sha256 "185959d06eb66cbb8fdd652ac4641daeb10b57d6ce8c1ed0ebbd98dc717cdb1c"
   end
 
   on_linux do
     on_intel do
-      url "https://github.com/ShiftinBits/pmux-agent/releases/download/v#{version}/pmux-agent_#{version}_Linux_x86_64.tar.gz"
       sha256 "9a9569621cdc280573c8bd14d87224f10f233643bef4e5059cc2e4b83a45a670"
+      url "https://github.com/ShiftinBits/pmux-agent/releases/download/v#{version}/pmux-agent_#{version}_Linux_x86_64.tar.gz",
+          verified: "github.com/ShiftinBits/pmux-agent/"
     end
     on_arm do
-      url "https://github.com/ShiftinBits/pmux-agent/releases/download/v#{version}/pmux-agent_#{version}_Linux_arm64.tar.gz"
       sha256 "99a935e8f4d3dec0cec617f989c00b95dfdfd2d31287e1ce9af743757aca4f7f"
+      url "https://github.com/ShiftinBits/pmux-agent/releases/download/v#{version}/pmux-agent_#{version}_Linux_arm64.tar.gz",
+          verified: "github.com/ShiftinBits/pmux-agent/"
     end
   end
 
   name "pmux"
   desc "Secure and private remote tmux access from your phone"
-  homepage "https://pmux.io"
+  homepage "https://pmux.io/"
 
   livecheck do
     skip "Auto-generated on release."
@@ -32,16 +35,10 @@ cask "pmux" do
     system_command "#{staged_path}/pmux", args: ["uninstall", "--keep-config", "--yes"]
   end
 
-  uninstall launchctl: [
-      "io.pmux.agent",
-    ],
-    delete: [
-      "~/Library/LaunchAgents/io.pmux.agent.plist",
-    ]
+  uninstall launchctl: "io.pmux.agent",
+            delete:    "~/Library/LaunchAgents/io.pmux.agent.plist"
 
-  zap trash: [
-      "~/.config/pmux",
-    ]
+  zap trash: "~/.config/pmux"
 
   caveats <<~EOS
     The pmux agent service will be stopped and removed on uninstall.

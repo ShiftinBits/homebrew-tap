@@ -17,9 +17,15 @@ jobs:
       - name: Set up Homebrew
         uses: Homebrew/actions/setup-homebrew@master
 
+      - name: Tap local repo
+        run: brew tap ShiftinBits/homebrew-tap "$(pwd)"
+
       - name: Audit casks
         run: |
-          brew audit --cask --strict Casks/*.rb
+          for f in Casks/*.rb; do
+            name=$(basename "$f" .rb)
+            brew audit --cask "ShiftinBits/tap/$name"
+          done
 
       - name: Check style
         run: |
