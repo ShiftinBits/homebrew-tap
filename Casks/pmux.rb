@@ -32,19 +32,13 @@ cask "pmux" do
     system_command "#{staged_path}/pmux", args: ["uninstall", "--keep-config", "--yes"]
   end
 
-  uninstall launchctl: [
-      "io.pmux.agent",
-    ],
-    delete: [
-      "~/Library/LaunchAgents/io.pmux.agent.plist",
-    ]
-
   zap trash: [
       "~/.config/pmux",
     ]
 
   caveats <<~EOS
-    The pmux agent service will be stopped and removed on uninstall.
+    The pmux agent runs on demand — it starts automatically whenever you
+    run a pmux command and needs no separate service.
 
     For full cleanup (including un-registering this host from the
     signaling server), run before uninstalling:
