@@ -4,19 +4,19 @@ cask "pmux" do
     run "/bin/sh", args: ["-c", "pkill -f 'pmux agent [r]un' || exit 0; for _ in $(seq 30); do pgrep -f 'pmux agent [r]un' >/dev/null || exit 0; sleep 0.1; done; pkill -9 -f 'pmux agent [r]un'"], must_succeed: false
   end
 
-  version "1.0.0"
+  version "1.0.1"
 
   on_macos do
-    sha256 "88115af33925be724b8ec6612d03f892d6446225541cc80da13648f5aec336dc"
+    sha256 "9d4b647a5494677bb631da364cbfa3ef2fa907c59462535a0137565fdc3f5ca2"
     url "https://github.com/ShiftinBits/pmux-agent/releases/download/v#{version}/pmux-agent_#{version}_Darwin_universal.zip"
   end
   on_linux do
     on_arm do
-      sha256 "8ed8c04784b71bd951e15e518e60b25eb9aa415a6a350c285e3a1ab64501d03c"
+      sha256 "df5f604eaac647de6797bcad4ec2dba9f0b8b71855235ecebd91924146d22759"
       url "https://github.com/ShiftinBits/pmux-agent/releases/download/v#{version}/pmux-agent_#{version}_Linux_arm64.tar.gz"
     end
     on_intel do
-      sha256 "c874c988155f12d024c8c3631d8ffeade10299a03d5e01716e6d27a0923d9d3d"
+      sha256 "19a5d4c826a513df94da03999579c4cb8a9766a9f319dabaae750e354c31289c"
       url "https://github.com/ShiftinBits/pmux-agent/releases/download/v#{version}/pmux-agent_#{version}_Linux_x86_64.tar.gz"
     end
   end
